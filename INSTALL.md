@@ -108,7 +108,7 @@ Then install `pySerial`:
 $ pip install pyserial
 ```
 
-### 4. Test that evrything is up and running
+### 4. Test that everything is up and running
 
 To make sure you're up and running to hack Arduino, we are going to compile some code.
 
