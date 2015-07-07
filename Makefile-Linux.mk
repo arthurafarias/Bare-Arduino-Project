@@ -4,16 +4,16 @@
 ### please refer to https://github.com/sudar/Arduino-Makefile/blob/master/arduino-mk-vars.md
 
 ### PROJECT_DIR
-### This is the path to where you have created/cloned your project
-PROJECT_DIR       = /home/{{ YOUR USERNAME }}/path/to/MyAwesomeProject
+### Don't touch!!!
+PROJECT_DIR       = $(shell pwd)
 
 ### AVR_GCC_VERSION
 ### Check if the version is equal or higher than 4.9
 AVR_GCC_VERSION  := $(shell expr `avr-gcc -dumpversion | cut -f1` \>= 4.9)
 
 ### ARDMK_DIR
-### Path to the Arduino-Makefile directory.
-ARDMK_DIR         = $(PROJECT_DIR)/Arduino-Makefile
+### Path to the Arduino-Makefile directory (don't touch)
+ARDMK_DIR         = /usr/local/share/bare-arduino-project/Arduino-Makefile
 
 ### ARDUINO_DIR
 ### Path to the Arduino application and ressources directory.
@@ -27,12 +27,12 @@ USER_LIB_PATH     :=  $(realpath $(PROJECT_DIR)/lib)
 ### It must be set to the board you are currently using. (i.e uno, mega, etc.)
 ### For the Arduino Uno, only BOARD_TAG is mandatory and BOARD_SUB can be equal to anything
 ### For the Arduino Mega2560, BOARD_SUB is also needed
-BOARD_TAG         = mega
+BOARD_TAG         = mega2560
 BOARD_SUB         = atmega2560
 
 ### MONITOR_BAUDRATE
 ### It must be set to Serial baudrate value you are using.
-MONITOR_BAUDRATE  = 115200
+MONITOR_BAUDRATE  = 9600
 
 ### AVR_TOOLS_DIR
 ### Path to the AVR tools directory such as avr-gcc, avr-g++, etc.
@@ -59,7 +59,7 @@ endif
 
 ### MONITOR_PORT
 ### The port your board is connected to. Using an '*' tries all the ports and finds the right one.
-MONITOR_PORT      = /dev/tty.usbmodem*
+MONITOR_PORT      = /dev/ttyACM*
 
 ### don't touch this
 CURRENT_DIR       = $(shell basename $(CURDIR))
@@ -71,4 +71,3 @@ OBJDIR            = $(PROJECT_DIR)/bin/$(CURRENT_DIR)/$(BOARD_TAG)
 
 ### path to Arduino.mk, inside the ARDMK_DIR, don't touch.
 include $(ARDMK_DIR)/Arduino.mk
-

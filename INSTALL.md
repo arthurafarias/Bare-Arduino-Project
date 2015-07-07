@@ -28,7 +28,8 @@ The toolchain gathers all the pieces of software you need to successfully write,
 
 It took us quite some time to figure out what to do, how to do it, which Homebrew `formula` to install, how to use the `Makefile` and so on. When we say quite some time, you can count full working weeks of reading, trying, trying again, cursing because nothing is working, dead ends, new ideas, clearer vision and finally a working toolchain.
 
-> It's our present to the world!
+> I don't have a mac, I don't know how it works, so this modifications excludes OSX.
+> I think this approach less complicated than cloning whole project each time.
 
 Have fun! :)
 
@@ -42,16 +43,6 @@ It will allow us to investigate first and not overflow the Arduino-Makefile issu
 
 ### Getting Ready - The Toolbox
 
-#### OS X
-
-Before starting, please make sure you have those installed:
-
-*	[Arduino IDE 1.0.x](http://arduino.cc/en/main/software#toc2) - Download the app from the website
-*	[Homebrew](http://mxcl.github.io/homebrew/) - Follow the instructions on their website
-*	[Git](http://git-scm.com/) - use `brew install git` to install the latest version
-
-**Important Note** : the `Arduino IDE 1.5.x and 1.6.x BETA` are **not** suppported yet. Refer to [issue #45](https://github.com/sudar/Arduino-Makefile/issues/45) in [Arduino-Makefile](https://github.com/sudar/Arduino-Makefile) for more information. Pull requests are welcome there.
-
 #### Linux
 
 Before starting we need to install `git` and `arduino`:
@@ -63,23 +54,11 @@ $ sudo add-apt-repository ppa:git-core/ppa
 # Update list
 $ sudo apt-get update && sudo apt-get upgrade
 
-# Install git 2.x.x and Arduino 1.0.x
+# Install latest git and Arduino
 $ sudo apt-get install git arduino
 ```
 
 ### 1. Install `avr-gcc`, `binutils`, `avr-libc` and `avrdude`
-
-#### OS X
-
-We've made a [Homebrew](http://brew.sh/) `formula` that you can `tap` like [*dat ass*](https://www.youtube.com/watch?v=18gp_NBg43c):
-
-```Bash
-$ brew tap WeAreLeka/avr
-$ brew install avr-libc
-$ brew install avrdude
-```
-
-Check that everything has been installed properly by running `avr-gcc -v` and `avrdude -v`.
 
 #### Linux
 
@@ -91,35 +70,36 @@ Make sure everything is up and running by running `avr-gcc -v` and `avrdude -v`.
 
 ### 2. Clone `Bare-Arduino-Project` repository from Github
 
-Simply clone the repo:
+Simply clone the repo inside /usr/local/share/bare-arduino-project:
 
 ```Bash
-$ git clone https://github.com/WeAreLeka/Bare-Arduino-Project path/to/New_Arduino_Project
+# git clone https://github.com/arthurafarias/Bare-Arduino-Project /usr/local/share/bare-arduino-project
 ```
 
 Initialize and update submodules:
 
 ```Bash
-$ cd path/to/New_Arduino_Project
-$ git submodule update --init --recursive
+# cd /usr/local/share/bare-arduino-project	
+# git submodule update --init --recursive
 ```
 
-[Create a Github repository](https://github.com/new) and push to it:
+[Fork template on github](https://github.com/arthurafarias/bare-arduino-project-template-linux)
+
+Follow steps available at https://help.github.com/articles/fork-a-repo/.
+ 
+[Clone template](https://github.com/your-account/your-project)
 
 ```Bash
-$ cd path/to/New_Arduino_Project
-$ git remote set-url origin https://github.com/{{YOUR GITHUB USERNAME}}/New_Arduino_Project
-$ git push --set-upstream origin master
+$ git clone https://github.com/you-account/your-project /path/to/your-project
+$ cd /path/to/your-project
 ```
 
 ### 3. Install `pySerial`
 
-To upload the program, we need to reset the Arduino board. This is done using a `python script` stored in `./Arduino-Makefile/bin`
-
-First, if you don't already have Python, you can install it using Homebrew on OS X:
+First, if you don't already have Python, you can install it using apt-get on Ubuntu:
 
 ```Bash
-$ brew install python
+$ apt-get install install python python-pip
 ```
 
 Then install `pySerial`:
@@ -132,26 +112,15 @@ $ pip install pyserial
 
 To make sure you're up and running to hack Arduino, we are going to compile some code.
 
-First `cd` to `src/mySecondProject` folder:
+First `cd` to `/path/to/your-project` folder:
 
 ```Bash
-$ cd path/to/New_Arduino_Project
-$ cd src/BarProject
-```
-
-Then copy the `Makefile-Example.mk`:
-
-```Bash
-1 if you are on OS X
-$ cp ../../Makefile-OSX.mk ./Makefile
-
-# or if you're running Linux
-$ cp ../../Makefile-Linux.mk ./Makefile
+$ cd /path/to/your-project
 ```
 
 **Don't forget** to modify the `Makefile` to suit your needs.
 
-Then compile and upload your code to an **Arduino Uno**:
+Then compile and upload your code to an **Arduino of your choice**:
 
 ```Bash
 $ make
@@ -160,4 +129,4 @@ $ make upload
 
 If it's not working, make sure everything has been installed correctly and check your `Makefile` configuration. Also make sure you are using and `Arduino Uno`.
 
-If nothing seems to help, you can fill an [issue here](https://github.com/WeAreLeka/Bare-Arduino-Project/issues).
+If nothing seems to help, you can fill an [issue here](https://github.com/arthurafarias/Bare-Arduino-Project/issues).
