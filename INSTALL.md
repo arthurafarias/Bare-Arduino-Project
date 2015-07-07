@@ -83,7 +83,7 @@ Initialize and update submodules:
 # git submodule update --init --recursive
 ```
 
-[Fork template on github](https://github.com/arthurafarias/bare-arduino-project-template-linux)
+[Fork template on github](https://github.com/arthurafarias/Bare-Arduino-Project-Template-Linux)
 
 Follow steps available at https://help.github.com/articles/fork-a-repo/.
  
