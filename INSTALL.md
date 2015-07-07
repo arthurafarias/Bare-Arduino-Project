@@ -120,13 +120,13 @@ $ cd /path/to/your-project
 
 **Don't forget** to modify the `Makefile` to suit your needs.
 
-Then compile and upload your code to an **Arduino of your choice**:
+Then compile and upload your code to an **Arduino Mega 2560**:
 
 ```Bash
 $ make
 $ make upload
 ```
 
-If it's not working, make sure everything has been installed correctly and check your `Makefile` configuration. Also make sure you are using and `Arduino Uno`.
+If it's not working, make sure everything has been installed correctly and check your `Makefile` configuration. Also make sure you are using and `Arduino Mega 2560`.
 
 If nothing seems to help, you can fill an [issue here](https://github.com/arthurafarias/Bare-Arduino-Project/issues).
